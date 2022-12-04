@@ -28,7 +28,9 @@ it('should show a joke setup', async () => {
 it('should show the delivery when clicking `Tell Me!`', async () => {
   const { findByRole, findByText } = render(App)
 
-  await fireEvent.click(await findByRole('button', { name: 'Tell Me!' }))
+  await fireEvent.click(await findByRole('button'))
+
+  console.log(await findByRole('button').name)
 
   expect(await findByText('Foo delivery')).toBeTruthy()
 })
@@ -36,8 +38,10 @@ it('should show the delivery when clicking `Tell Me!`', async () => {
 it('should show a new joke setup when clicking `Another` after seeing the delivery', async () => {
   const { findByRole, findByText } = render(App)
 
-  await fireEvent.click(await findByRole('button', { name: 'Tell Me!' }))
-  await fireEvent.click(await findByRole('button', { name: 'Another' }))
+  await fireEvent.click(await findByRole('button'))
+  await fireEvent.click(await findByRole('button'))
+
+  console.log(await findByRole('button').name)
 
   expect(await findByText('Foo setup 2')).toBeTruthy()
 })
